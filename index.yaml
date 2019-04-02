@@ -3,11 +3,12 @@ entries:
   citrix-k8s-cpx-ingress-controller:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2019-04-01T10:46:20.292806173+05:30
+    created: 2019-04-02T11:26:14.016815563+05:30
     description: A Helm chart for Citrix ADC CPX with Citrix ingress Controller running
       as sidecar.
-    digest: 8cb7caf48a3ff34889782e692038663b97a4aa8be9eb5ff5e36992d81f8ff185
+    digest: 1e1f2e957e51b2e47dc5a7936b0d8c40a8d7eb409ab18234660938242a84f6d2
     home: https://www.citrix.com
+    icon: https://github.com/citrix/citrix-k8s-ingress-controller/blob/gh-pages/icon.png
     maintainers:
     - email: priyanka.sharma@citrix.com
       name: Priyanka Sharma
@@ -22,10 +23,11 @@ entries:
   citrix-k8s-ingress-controller:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2019-04-01T10:46:20.293615189+05:30
+    created: 2019-04-02T11:26:14.017660204+05:30
     description: A Helm chart for Citrix Ingress Controller configuring MPX/VPX
-    digest: 92850018de7503a364935cb79ae99b672310448f44e4ffb47c49cafb2cd70845
+    digest: d9cfc8cb7dfddb60b6149c7b41d9a41b670bfe55892b83a5a54d925b7adf497a
     home: https://www.citrix.com
+    icon: https://github.com/citrix/citrix-k8s-ingress-controller/blob/gh-pages/icon.png
     maintainers:
     - email: priyanka.sharma@citrix.com
       name: Priyanka Sharma
@@ -37,4 +39,4 @@ entries:
     urls:
     - https://citrix.github.io/citrix-k8s-ingress-controller/citrix-k8s-ingress-controller-1.1.1.tgz
     version: 1.1.1
-generated: 2019-04-01T10:46:20.291770203+05:30
+generated: 2019-04-02T11:26:14.015861221+05:30
