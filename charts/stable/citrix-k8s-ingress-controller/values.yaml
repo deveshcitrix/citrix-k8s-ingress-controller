@@ -4,8 +4,10 @@
 
 # image contains information needed to fetch CIC image
 image:
-  repository: quay.io/citrix/citrix-k8s-ingress-controller 
-  tag: 1.1.1
+  #repository: quay.io/citrix/citrix-k8s-ingress-controller 
+  #tag: 1.1.1
+  repository: 10.217.212.108:5000/citrix-ingress-controller
+  tag: 1.0.1
   pullPolicy: Always
 #loginFileName is secret file for NetScaler login
 loginFileName:
@@ -37,3 +39,17 @@ exporter:
        pullPolicy: Always
   ports:
        containerPort: 8888
+
+ns_logproxy:
+  enabled: false
+  # Define in Fluent-bit output format.
+  #output: |
+  #  Name            kafka
+  #  Match           *
+  #  Brokers         dp-kafka-cp-kafka-headless:9092
+  #  Topics          nshttp-logs
+  #  rdkafka.log.connection.close false
+  #  rdkafka.queue.buffering.max.ms 1000
+  #  rdkafka.queue.buffering.max.messages 30000
+  #  rdkafka.request.required.acks 0
+  #  Retry_Limit     1

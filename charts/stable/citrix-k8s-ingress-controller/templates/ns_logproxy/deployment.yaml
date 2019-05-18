@@ -1,0 +1,35 @@
+{{- if .Values.ns_logproxy.enabled }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: fluent-bit-lstream
+spec:
+  replicas: 6
+  template:
+    metadata:
+      name: fluent-bit-lstream
+      labels:
+        app: fluent-bit-lstream
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "2020"
+        prometheus.io/path: /api/v1/metrics/prometheus
+    spec:
+      containers:
+      - name: fluent-bit-lstream
+        image: 10.217.212.108:5000/fluent-bit-lstream:1.1.0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2020
+          name: metrics
+        - containerPort: 5557
+          name: lstream
+        volumeMounts:
+        - name: fluent-bit-config
+          mountPath: /fluent-bit/etc/
+      volumes:
+      - name: fluent-bit-config
+        configMap:
+          name: fluent-bit-config
+{{- end }}
+

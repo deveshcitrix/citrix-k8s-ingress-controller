@@ -1,0 +1,22 @@
+{{- if .Values.ns_logproxy.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluent-bit-lstream
+  labels:
+    app: fluent-bit-lstream
+spec:
+  clusterIP: None
+  ports:
+  - port: 2020
+    protocol: TCP
+    name: fluent-bit-metrics
+    targetPort: 2020
+  - port: 5557
+    protocol: TCP
+    name: fluent-bit-lstream
+    targetPort: 5557
+  selector:
+    app: fluent-bit-lstream
+{{- end }}
+
