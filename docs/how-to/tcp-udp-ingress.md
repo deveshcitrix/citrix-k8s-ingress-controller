@@ -26,7 +26,42 @@ spec:
         servicePort: 6379
 ```
 
-**Sample:** Ingress definition for UDP-based Ingress.
+**Sample:** Ingress definition for UDP-based Ingress. The following is a sample for Citrix ingress controller version 1.1.1:
+
+```yml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: udp-ingress
+    annotations:
+        ingress.citrix.com/insecure-service-type: “udp”
+        ingress.citrix.com/insecure-port: “5084”
+spec:
+    backend:
+        serviceName: frontend
+        servicePort: udp-53  /* Service port name defined in the service defination */
+```
+
+The following is a sample service definition where the service port name is defined as `udp-53`:
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: bind
+  labels:
+    app: bind
+spec:
+  ports:
+  - name: udp-53
+    port: 53
+    targetPort: 53
+    protocol: UDP
+  selector:
+    name: bind
+```
+
+**Sample:** Ingress definition for UDP-based Ingress. The following is a sample for Citrix ingress controller version 1.1.3:
 
 ```yml
 apiVersion: extensions/v1beta1
