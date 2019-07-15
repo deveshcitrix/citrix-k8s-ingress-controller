@@ -32,3 +32,6 @@ exporter:
   pullPolicy: Always
   ports:
     containerPort: 8888
+ns_fluentbit_logproxy:
+  enabled: false
+
