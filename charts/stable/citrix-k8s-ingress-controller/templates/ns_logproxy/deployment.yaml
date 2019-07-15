@@ -1,4 +1,4 @@
-{{- if .Values.ns_logproxy.enabled }}
+{{- if .Values.ns_fluentbit_logproxy.enabled }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:

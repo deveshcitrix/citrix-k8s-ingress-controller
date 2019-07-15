@@ -1,4 +1,4 @@
-{{- if .Values.ns_logproxy.enabled }}
+{{- if .Values.ns_fluentbit_logproxy.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -26,11 +26,11 @@ data:
 
   output.conf: |
     [OUTPUT]
-{{- if (empty .Values.ns_logproxy.output) }}
+{{- if (empty .Values.ns_fluentbit_logproxy.output) }}
         Name            stdout
         Match           *
 {{- else}}
-{{ .Values.ns_logproxy.output | indent 9 }}
+{{ .Values.ns_fluentbit_logproxy.output | indent 9 }}
 {{- end }}
 {{- end }}
 
