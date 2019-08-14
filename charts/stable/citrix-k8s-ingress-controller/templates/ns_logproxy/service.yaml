@@ -20,3 +20,20 @@ spec:
     app: fluent-bit-lstream
 {{- end }}
 
+{{- if .Values.ns_logproxy.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: ns-logproxy
+  labels:
+    app: ns-logproxy
+spec:
+  clusterIP: None
+  ports:
+    - port: 5557
+      protocol: TCP
+      name: ns-logstream-transaction
+      targetPort: 5557
+  selector:
+      app: ns-logstream-transaction
+{{- end }}

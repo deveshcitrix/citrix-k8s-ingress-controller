@@ -5,7 +5,9 @@
 # image contains information needed to fetch CIC image
 cic:
   # image: quay.io/citrix/citrix-k8s-ingress-controller:1.1.3
-  image: 10.217.212.108:5000/cic-logging:latest
+  # image: 10.217.212.108:5000/cic-logging:latest
+  image: 10.217.212.108:5000/cic-logging:1.0.2
+  # image: 10.217.212.108:5000/cic-logging:1.0.1
   pullPolicy: Always
 # openshift is set to true if charts are being deployed in OpenShift environment.
 openshift: false
@@ -50,3 +52,7 @@ ns_fluentbit_logproxy:
   #  rdkafka.queue.buffering.max.messages 30000
   #  rdkafka.request.required.acks 0
   #  Retry_Limit     1
+ns_logproxy:
+  enabled: false
+ns_tracing:
+  enabled: false

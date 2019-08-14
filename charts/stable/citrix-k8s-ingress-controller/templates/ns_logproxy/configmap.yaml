@@ -34,3 +34,35 @@ data:
 {{- end }}
 {{- end }}
 
+{{- if .Values.ns_logproxy.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logproxy-config
+data:
+  lstreamd.conf: |-
+    {
+        "RecordType": {
+            "HTTP": "anomalous",
+            "TCP": "none",
+            "SWG": "all",
+            "VPN": "all",
+            "NGS": "all",
+            "ICA": "all",
+            "APPFW": "none",
+            "BOT": "none",
+            "VIDEOOPT": "none",
+            "BURST_CQA": "none",
+            "SLA": "none"
+        },
+        "ProcessAlways": "no",
+        "FileSizeMax": "40",
+        "ProcessYieldTimeOut": "500",
+        "FileStorageLimit": "1000",
+{{- if .Values.ns_tracing.enabled }}
+        "EnableTracing": "yes",
+        "TracingServer": "zipkin:9411/api/v1/spans",
+{{- end }}
+        "SkipAvro": "no"
+    }
+{{- end }}

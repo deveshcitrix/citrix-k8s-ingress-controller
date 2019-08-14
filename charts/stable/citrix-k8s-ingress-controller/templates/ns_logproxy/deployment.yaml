@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit-lstream
-        image: 10.217.212.108:5000/fluent-bit-lstream:1.1.0.3
+        image: 10.217.212.108:5000/fluent-bit-lstream:1.1.0.4
         imagePullPolicy: Always
         ports:
         - containerPort: 2020
@@ -33,3 +33,32 @@ spec:
           name: fluent-bit-config
 {{- end }}
 
+{{- if .Values.ns_logproxy.enabled }}
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: ns-logproxy
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: ns-logproxy
+      labels:
+        app: ns-logproxy
+    spec:
+      containers:
+        - name: ns-logproxy
+          image: "in-docker-reg.eng.citrite.net/cpx-dev/logproxy:v5"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5557
+              name: lstream
+          volumeMounts:
+            - name: lstreamd-config
+              mountPath: /var/logproxy/lstreamd/conf/
+
+      volumes:
+        - name: lstreamd-config
+          configMap:
+            name: logproxy-config
+{{- end }}
