@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: fluent-bit-lstream
 spec:
-  replicas: 6
+  replicas: {{ .Values.ns_fluentbit_logproxy.replicas | default "6" }}
   template:
     metadata:
       name: fluent-bit-lstream
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit-lstream
-        image: 10.217.212.108:5000/fluent-bit-lstream:1.1.0.4
+        image: {{ .Values.ns_fluentbit_logproxy.image | default "10.217.212.108:5000/fluent-bit-lstream:1.1.0.4" }}
         imagePullPolicy: Always
         ports:
         - containerPort: 2020
@@ -39,7 +39,7 @@ kind: Deployment
 metadata:
   name: ns-logproxy
 spec:
-  replicas: 3
+  replicas: {{ .Values.ns_logproxy.replicas | default "3" }}
   template:
     metadata:
       name: ns-logproxy
@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: ns-logproxy
-          image: "in-docker-reg.eng.citrite.net/cpx-dev/logproxy:v5"
+          image: {{ .Values.ns_logproxy.image | default "in-docker-reg.eng.citrite.net/cpx-dev/logproxy:v5" }}
           imagePullPolicy: Always
           ports:
             - containerPort: 5557

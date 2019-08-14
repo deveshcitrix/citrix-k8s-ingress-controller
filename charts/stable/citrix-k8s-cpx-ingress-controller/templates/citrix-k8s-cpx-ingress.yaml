@@ -140,7 +140,7 @@ spec:
 {{- end }}
 {{- if .Values.ns_fluentbit_logproxy.enabled }}
         - name: fluent-bit-lstream
-          image: 10.217.212.108:5000/fluent-bit-lstream:1.1.0.3
+          image: {{ .Values.ns_fluentbit_logproxy.image | default "10.217.212.108:5000/fluent-bit-lstream:1.1.0.4" }}
           imagePullPolicy: Always
           ports:
           - containerPort: 2020
