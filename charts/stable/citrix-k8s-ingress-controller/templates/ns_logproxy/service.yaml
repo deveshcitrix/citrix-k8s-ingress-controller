@@ -32,8 +32,8 @@ spec:
   ports:
     - port: 5557
       protocol: TCP
-      name: ns-logstream-transaction
+      name: ns-logproxy
       targetPort: 5557
   selector:
-      app: ns-logstream-transaction
+      app: ns-logproxy
 {{- end }}

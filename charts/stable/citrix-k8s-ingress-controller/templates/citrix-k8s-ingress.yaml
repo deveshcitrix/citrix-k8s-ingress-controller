@@ -109,6 +109,10 @@ spec:
         - name: "NS_LOGPROXY"
           value: "fluent-bit-lstream.default.svc.cluster.local"
 {{- end}}
+{{- if .Values.ns_logproxy.enabled }}
+        - name: "NS_LOGPROXY"
+          value: "ns-logproxy.default.svc.cluster.local"
+{{- end}}
 {{- if .Values.exporter.required }}
       - name: exporter
         image: "{{ .Values.exporter.image }}"
