@@ -126,6 +126,7 @@ The following table lists the configurable parameters of the Citrix ADC CPX with
 | ns_fluentbit_logproxy.output | Optional | empty | Set to a different fluentbit output if the logs shouldn't be directed to the console. Relevant only if ns_fluentbit_logproxy.enabled=true. |
 | ns_fluentbit_logproxy.replicas | Optional | 6 | Use this argument to configure a different number of fluentbit logproxy replicas. Relevant only if ns_fluentbit_logproxy.enabled=true |
 | ns_fluentbit_logproxy.image | Optional | 10.217.212.108:5000/fluent-bit-lstream:1.1.0.4 | Configure this to specify a different image version for fluent bit. Relevant only if ns_fluentbit_logproxy.enabled=true. |
+| ns_tracing.enabled | Optional | false | Set true to enable NetScaler Tracing. |
 | openshift | Optional | false | Set this argument if OpenShift environment is being used. |
 
 > **Note:**
