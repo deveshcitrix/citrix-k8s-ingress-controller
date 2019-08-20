@@ -119,6 +119,13 @@ The following table lists the configurable parameters of the Citrix ADC CPX with
 | exporter.pullPolicy | Optional | Always | The Exporter for Citrix ADC Stats image pull policy. |
 | exporter.ports.containerPort | Optional | 8888 | The Exporter for Citrix ADC Stats container port. |
 | ingressClass | Optional | N/A | If multiple ingress load balancers are used to load balance different ingress resources. You can use this parameter to specify Citrix ingress controller to configure Citrix ADC associated with specific ingress class.|
+| ns_logproxy.enabled | Optional | false | Set true to enable usage of LogProxy for streaming netscaler logs. Only one of ns_logproxy or ns_fluentbit_logproxy should be configured. |
+| ns_logproxy.replicas | Optional | 3 | Use this argument to configure a different number of LogProxy replicas. Relevant only if ns_logproxy.enabled=true. |
+| ns_logproxy.image | Optional | in-docker-reg.eng.citrite.net/cpx-dev/logproxy:v5 | Configure this to specify a different image version for LogProxy. Relevant only if ns_logproxy.enabled=true. |
+| ns_fluentbit_logproxy.enabled | Optional | false | Set true to enable usage of fluentbit Log proxy for streaming netscaler logs. Only one of ns_logproxy or ns_fluentbit_logproxy should be configured. |
+| ns_fluentbit_logproxy.output | Optional | empty | Set to a different fluentbit output if the logs shouldn't be directed to the console. Relevant only if ns_fluentbit_logproxy.enabled=true. |
+| ns_fluentbit_logproxy.replicas | Optional | 6 | Use this argument to configure a different number of fluentbit logproxy replicas. Relevant only if ns_fluentbit_logproxy.enabled=true |
+| ns_fluentbit_logproxy.image | Optional | 10.217.212.108:5000/fluent-bit-lstream:1.1.0.4 | Configure this to specify a different image version for fluent bit. Relevant only if ns_fluentbit_logproxy.enabled=true. |
 | openshift | Optional | false | Set this argument if OpenShift environment is being used. |
 
 > **Note:**
